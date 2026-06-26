@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://compoundinterestcalculator.example.com/sitemap-index.xml
+Sitemap: https://compoundgrowcalculator.com/sitemap-index.xml
