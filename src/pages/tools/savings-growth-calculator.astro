@@ -1,0 +1,90 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+import Calculator from '../../components/Calculator.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+
+const title = 'Savings Growth Calculator — Watch Your Savings Grow';
+const description = 'Use our free savings growth calculator to estimate how much your savings account balance could grow over time with regular deposits and compound interest.';
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How does a savings growth calculator work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'It estimates your future savings balance by combining your starting deposit, recurring monthly deposits, annual interest rate, compounding frequency, and time horizon.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is a good savings account interest rate?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'As of recent years, high-yield savings accounts have offered rates between 4% and 5%. Traditional savings accounts often pay far less, sometimes under 0.5%.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much should I save each month?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Aim to save at least 20% of your income if possible. Build an emergency fund first, then save for short-term goals and long-term investments.',
+      },
+    },
+  ],
+};
+
+const jsonLd = [faq];
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Saving money consistently is the foundation of financial security. Whether you are building an emergency fund, saving for a down payment, or setting aside cash for a future vacation, a savings growth calculator shows you how your balance can grow over time. By entering your starting amount, monthly deposits, interest rate, and timeline, you can set realistic goals and track your progress along the way.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    High-yield savings accounts have made it easier than ever to earn meaningful interest on cash. While savings rates are lower than long-term stock market returns, they come with much less risk and allow quick access to your money. This makes savings accounts ideal for emergency funds and short-term goals where protecting your principal matters more than maximizing growth.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    The calculator below helps you compare different savings scenarios. Try increasing your monthly deposit by just $50 or $100 to see how much faster you can reach your goal. You may be surprised how much small, consistent contributions add up, especially when paired with daily or monthly compounding interest from a high-yield account.
+  </p>
+
+  <Calculator />
+
+  <section class="mt-12 prose prose-slate max-w-none">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Tips for Growing Your Savings</h2>
+    <ul>
+      <li><strong>Choose a high-yield account:</strong> Online banks often pay significantly more interest.</li>
+      <li><strong>Pay yourself first:</strong> Automate transfers to savings on payday.</li>
+      <li><strong>Keep emergency savings separate:</strong> Avoid dipping into your safety net for non-emergencies.</li>
+      <li><strong>Compare APYs regularly:</strong> Rates change, so shop around once or twice a year.</li>
+      <li><strong>Use separate buckets:</strong> Label savings for different goals to stay motivated.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Find a High-Yield Savings Account</h2>
+    <p>
+      Explore competitive savings options from
+      <AffiliateLink href="https://www.marcus.com/us/en/savings/high-yield-savings" label="Marcus by Goldman Sachs" />,
+      <AffiliateLink href="https://www.ally.com/bank/online-savings-account/" label="Ally Bank" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />, and
+      <AffiliateLink href="https://www.schwab.com/" label="Charles Schwab" />.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Understanding Your Savings Estimate</h2>
+    <p>
+      The results show your projected balance, the total amount you deposited, and the interest earned. Because savings accounts use compound interest, the interest you earn each period is calculated on a growing balance. This means your earnings accelerate over time, even if the interest rate stays the same. The chart and table make it easy to see this effect year by year.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      {faq.mainEntity.map((item) => (
+        <details class="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <summary class="font-semibold text-slate-900 dark:text-slate-100 cursor-pointer">{item.name}</summary>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">{item.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</ToolLayout>

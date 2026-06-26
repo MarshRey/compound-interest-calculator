@@ -1,0 +1,77 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+
+const title = 'Blog — Compound Interest Calculator';
+const description = 'Read our latest guides on compound interest, investing, retirement planning, and growing your savings.';
+
+const posts = [
+  {
+    title: 'What Is Compound Interest? A Complete Guide',
+    description: 'Learn what compound interest is, how it works, and why it is the most powerful tool for growing your savings and investments over time.',
+    href: '/blog/what-is-compound-interest/',
+    date: 'June 1, 2024',
+  },
+  {
+    title: 'Compound Interest vs. Simple Interest: What Is the Difference?',
+    description: 'Understand the difference between compound interest and simple interest, and learn why compounding can dramatically increase your savings over time.',
+    href: '/blog/compound-interest-vs-simple-interest/',
+    date: 'June 2, 2024',
+  },
+  {
+    title: 'How to Start Investing: A Beginner’s Guide',
+    description: 'Learn the basics of how to start investing, from choosing an account to building a simple portfolio that grows with compound interest.',
+    href: '/blog/how-to-start-investing/',
+    date: 'June 3, 2024',
+  },
+  {
+    title: 'Best Compound Interest Accounts for 2024',
+    description: 'Discover the best compound interest accounts, including high-yield savings, CDs, money market accounts, and brokerage accounts for long-term growth.',
+    href: '/blog/best-compound-interest-accounts/',
+    date: 'June 4, 2024',
+  },
+  {
+    title: 'The Rule of 72: How to Estimate Compound Growth',
+    description: 'Learn the Rule of 72, a simple mental math shortcut for estimating how long it will take your money to double with compound interest.',
+    href: '/blog/rule-of-72/',
+    date: 'June 5, 2024',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: title,
+  description,
+  url: Astro.url.toString(),
+  blogPost: posts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    url: post.href,
+    datePublished: post.date,
+  })),
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <p class="text-slate-600 dark:text-slate-400 mb-8">
+    Explore our educational articles about compound interest, investing, retirement planning, and smart saving strategies. Each guide is designed to help you make better financial decisions and put your money to work.
+  </p>
+
+  <ul class="grid gap-6">
+    {
+      posts.map((post) => (
+        <li>
+          <a
+            href={post.href}
+            class="block rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary-700"
+          >
+            <p class="text-sm text-slate-500 dark:text-slate-400">{post.date}</p>
+            <h2 class="mt-2 text-xl font-semibold text-slate-900 dark:text-slate-100">{post.title}</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-400">{post.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</ToolLayout>

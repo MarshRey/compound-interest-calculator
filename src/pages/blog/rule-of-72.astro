@@ -1,0 +1,76 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+
+const title = 'The Rule of 72: How to Estimate Compound Growth';
+const description = 'Learn the Rule of 72, a simple mental math shortcut for estimating how long it will take your money to double with compound interest.';
+const publishDate = '2024-06-05';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: {
+    '@type': 'Organization',
+    name: 'Compound Interest Calculator',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Compound Interest Calculator',
+  },
+  datePublished: publishDate,
+  dateModified: publishDate,
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="prose prose-slate max-w-none">
+    <p>
+      The Rule of 72 is a simple and useful shortcut for estimating how long it will take an investment to double in value. By dividing 72 by your expected annual rate of return, you get a rough number of years required for your money to double. It is not perfectly precise, but it is close enough for quick mental calculations and helps illustrate the power of compound interest.
+    </p>
+
+    <h2>How the Rule of 72 Works</h2>
+    <p>
+      The formula is simple: 72 divided by your annual rate of return equals the approximate number of years to double your money. For example, if you expect a 7.2% annual return, dividing 72 by 7.2 gives you 10 years. At a 10% annual return, your money would double in roughly 7.2 years. At a 6% return, it would take about 12 years.
+    </p>
+    <p>
+      The rule works best for returns between about 5% and 12%. For very high or very low rates, the approximation becomes less accurate. Still, it is a handy way to compare investment opportunities and understand the effect of different rates of return over time.
+    </p>
+
+    <h2>Why the Rule of 72 Is Useful</h2>
+    <p>
+      One of the biggest benefits of the Rule of 72 is that it makes compound interest tangible. Instead of looking at abstract percentages, you can see how quickly your money could grow. It also highlights the importance of your rate of return. A difference of just 1% or 2% per year can shave years off the time it takes to double your money.
+    </p>
+    <p>
+      The rule also helps with long-term planning. If you know your money doubles every 10 years, you can estimate that $50,000 invested today could become $100,000 in 10 years, $200,000 in 20 years, and $400,000 in 30 years. That kind of exponential growth is the foundation of retirement planning and wealth building.
+    </p>
+
+    <h2>Applying the Rule to Different Scenarios</h2>
+    <p>
+      You can use the Rule of 72 for more than just investments. It also works for inflation, debt, and population growth. For example, if inflation averages 3% per year, dividing 72 by 3 tells you that prices will roughly double in 24 years. If your credit card charges 18% interest, your debt could double in just 4 years if left unpaid. This is a powerful reminder of why high-interest debt is so dangerous.
+    </p>
+
+    <h2>Use a Calculator for Detailed Projections</h2>
+    <p>
+      While the Rule of 72 is great for quick estimates, a detailed calculator gives you a more accurate picture. Use our <a href="/tools/compound-interest-calculator/">compound interest calculator</a> or <a href="/tools/retirement-savings-calculator/">retirement savings calculator</a> to model your own contributions, timeline, and expected return. Calculators also let you compare different rates, monthly contributions, and compounding frequencies all at once.
+    </p>
+    <p>
+      The Rule of 72 is best thought of as a conversation starter or a quick sanity check. When you are ready to make real decisions, use detailed projections and consider your full financial picture, including taxes, fees, and inflation. Small adjustments in these areas can have a meaningful impact on your final results.
+    </p>
+
+    <h2>Limitations of the Rule</h2>
+    <p>
+      While the Rule of 72 is convenient, it is only an approximation. It assumes a constant rate of return, which is rarely the case in real markets. It also does not account for taxes, fees, inflation, or additional contributions. For a complete financial plan, use detailed projections and consider working with a fee-only financial advisor if your situation is complex.
+    </p>
+
+    <h2>Start Putting Time on Your Side</h2>
+    <p>
+      The most important takeaway from the Rule of 72 is that time matters more than almost anything else. The sooner you invest, the more doubling periods your money can experience. Open an account with
+      <AffiliateLink href="https://investor.vanguard.com/" label="Vanguard" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />, or
+      <AffiliateLink href="https://www.betterment.com/" label="Betterment" />
+      and let compound growth work for you.
+    </p>
+  </div>
+</ToolLayout>

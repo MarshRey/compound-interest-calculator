@@ -1,0 +1,37 @@
+---
+export interface Props {
+  href: string;
+  label: string;
+  rel?: string;
+  target?: string;
+  className?: string;
+}
+
+const { href, label, rel = 'sponsored noopener', target = '_blank', className = '' } = Astro.props;
+---
+
+<a
+  href={href}
+  rel={rel}
+  target={target}
+  class={`inline-flex items-center font-medium text-primary-600 hover:text-primary-800 hover:underline transition-colors dark:text-primary-400 dark:hover:text-primary-300 ${className}`}
+  data-affiliate="true"
+>
+  {label}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="ml-1"
+    aria-hidden="true"
+  >
+    <path d="M7 7h10v10"></path>
+    <path d="M7 17 17 7"></path>
+  </svg>
+</a>

@@ -1,0 +1,40 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+
+const title = 'Contact Us — Compound Interest Calculator';
+const description = 'Get in touch with the Compound Interest Calculator team for questions, feedback, or partnership inquiries.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: title,
+  description,
+  url: Astro.url.toString(),
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="prose prose-slate max-w-none">
+    <p>
+      We would love to hear from you. Whether you have a question about our calculators, a suggestion for a new feature, feedback on our content, or a partnership inquiry, feel free to reach out.
+    </p>
+
+    <h2>Contact Information</h2>
+    <p>
+      Email us at <a href="mailto:hello@compoundinterestcalculator.example.com">hello@compoundinterestcalculator.example.com</a>. We do our best to respond within two business days.
+    </p>
+
+    <h2>Frequently Asked Feedback</h2>
+    <ul>
+      <li><strong>Report a bug:</strong> Let us know if a calculator is not working as expected.</li>
+      <li><strong>Request a feature:</strong> Tell us what tool or calculation you would like to see next.</li>
+      <li><strong>Content corrections:</strong> Found an error in an article? We appreciate the heads up.</li>
+      <li><strong>Affiliate inquiries:</strong> Contact us to discuss relevant partnership opportunities.</li>
+    </ul>
+
+    <h2>Stay Connected</h2>
+    <p>
+      Explore more of our site by visiting the <a href="/tools/">tools page</a> or reading the latest on our <a href="/blog/">blog</a>. Thank you for using Compound Interest Calculator.
+    </p>
+  </div>
+</ToolLayout>

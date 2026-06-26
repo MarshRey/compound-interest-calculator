@@ -1,0 +1,105 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+import Calculator from '../../components/Calculator.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+
+const title = 'Compound Interest Calculator — Free Investment Growth Tool';
+const description = 'Use our free compound interest calculator to see how much money you can make. Enter your principal, monthly contributions, interest rate, and years to get a detailed breakdown and chart.';
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is compound interest?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Compound interest is the interest earned on both your original money and the interest that has already been added to your account. Over time, this creates exponential growth.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I use the compound interest calculator?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Enter your initial investment, monthly contribution, expected annual return, investment length, and compounding frequency. The calculator shows your total balance, contributions, interest earned, and a year-by-year breakdown.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best compounding frequency?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'More frequent compounding generally yields slightly higher returns, but the difference between monthly and daily compounding is usually small. The annual return and time invested matter far more.',
+      },
+    },
+  ],
+};
+
+const jsonLd = [
+  faq,
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: title,
+    description,
+    applicationCategory: 'FinanceApplication',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+];
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Compound interest is one of the most powerful forces in personal finance. It allows your money to grow faster over time because you earn returns not only on your initial investment, but also on the interest that accumulates. Whether you are saving for retirement, building an emergency fund, or planning a major purchase, understanding how compound interest works can help you make smarter financial decisions.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Our free compound interest calculator makes it easy to project the future value of your savings or investments. Simply enter your starting balance, how much you plan to contribute each month, your expected annual rate of return, the number of years you will invest, and how often interest compounds. You will instantly see your total projected balance, the amount you contributed, the interest you earned, and a year-by-year growth breakdown complete with a visual chart.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    You can use this calculator for many purposes. Investors use it to estimate portfolio growth. Savers use it to see how much a high-yield savings account could earn. Home buyers use it to project a down payment fund. Retirees use it to model how long their nest egg might last. Whatever your goal, the calculator gives you a clear picture of how time, contributions, and return work together.
+  </p>
+
+  <Calculator />
+
+  <section class="mt-12 prose prose-slate max-w-none">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Tips for Maximizing Compound Interest</h2>
+    <ul>
+      <li><strong>Start early:</strong> The longer your money is invested, the more time it has to grow.</li>
+      <li><strong>Contribute consistently:</strong> Monthly contributions add up quickly and accelerate growth.</li>
+      <li><strong>Reinvest dividends and interest:</strong> Leaving gains in your account maximizes compounding.</li>
+      <li><strong>Minimize fees:</strong> High fees can significantly reduce your long-term returns.</li>
+      <li><strong>Choose tax-advantaged accounts:</strong> IRAs and 401(k)s let your money grow without annual tax drag.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Where to Invest</h2>
+    <p>
+      Consider low-cost brokerage accounts and robo-advisors to put your money to work. Popular options include
+      <AffiliateLink href="https://investor.vanguard.com/" label="Vanguard" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />,
+      <AffiliateLink href="https://www.schwab.com/" label="Charles Schwab" />,
+      <AffiliateLink href="https://www.betterment.com/" label="Betterment" />, and
+      <AffiliateLink href="https://www.wealthfront.com/" label="Wealthfront" />.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Understanding the Results</h2>
+    <p>
+      The total balance shows the estimated value of your account at the end of your chosen time period. Total contributions include your initial investment plus every monthly deposit you made. Total interest earned is the difference between your final balance and your total contributions. The year-by-year table and chart help you see how growth accelerates over time as interest compounds on an increasingly larger balance.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      {faq.mainEntity.map((item) => (
+        <details class="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <summary class="font-semibold text-slate-900 dark:text-slate-100 cursor-pointer">{item.name}</summary>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">{item.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</ToolLayout>

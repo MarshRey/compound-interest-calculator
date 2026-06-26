@@ -1,0 +1,79 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+
+const title = 'Compound Interest vs. Simple Interest: What Is the Difference?';
+const description = 'Understand the difference between compound interest and simple interest, and learn why compounding can dramatically increase your savings over time.';
+const publishDate = '2024-06-02';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: {
+    '@type': 'Organization',
+    name: 'Compound Interest Calculator',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Compound Interest Calculator',
+  },
+  datePublished: publishDate,
+  dateModified: publishDate,
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="prose prose-slate max-w-none">
+    <p>
+      When you deposit money into a savings account, invest in the stock market, or take out a loan, the type of interest applied can make a huge difference in your final outcome. The two most common types are simple interest and compound interest. While they may sound similar, the long-term effects are dramatically different. Understanding both can help you make smarter decisions about where to save, invest, and borrow.
+    </p>
+
+    <h2>What Is Simple Interest?</h2>
+    <p>
+      Simple interest is calculated only on the original principal amount. The formula is straightforward: multiply the principal by the interest rate and the time period. For example, if you invest $10,000 at a simple interest rate of 5% for 10 years, you earn $500 per year, or $5,000 total. Your final balance would be $15,000.
+    </p>
+    <p>
+      Simple interest is common in certain short-term loans, bonds, and some savings products. It is easy to calculate and predictable. However, because it does not earn interest on previously earned interest, it grows much more slowly than compound interest over long periods.
+    </p>
+
+    <h2>What Is Compound Interest?</h2>
+    <p>
+      Compound interest is calculated on the principal plus any interest that has already been added to the account. This means your balance grows faster as time goes on. Using the same example, $10,000 invested at 5% compounded annually for 10 years would grow to about $16,289. The extra $1,289 comes from interest earning its own interest.
+    </p>
+    <p>
+      The effect becomes even more dramatic over longer timeframes. Over 30 years, the same $10,000 at 5% compound interest would grow to more than $43,000, while simple interest would only reach $25,000. That difference is why compound interest is so powerful for long-term investors.
+    </p>
+
+    <h2>Compounding Frequency Matters</h2>
+    <p>
+      Interest can compound at different frequencies: annually, semi-annually, quarterly, monthly, or daily. The more often interest compounds, the faster your balance grows, although the difference between frequencies is usually small. For example, daily compounding will yield slightly more than annual compounding over many years. You can compare these scenarios using our <a href="/tools/compound-interest-calculator/">compound interest calculator</a>.
+    </p>
+
+    <h2>A Side-by-Side Example</h2>
+    <p>
+      Let us compare the two types of interest using a $5,000 deposit at 6% over 20 years. With simple interest, you would earn $300 per year, totaling $6,000 in interest and ending with $11,000. With compound interest compounded annually, your balance would grow to about $16,036. That is more than $5,000 extra just from letting the interest compound. If the interest compounded monthly instead of annually, the final balance would be even slightly higher.
+    </p>
+    <p>
+      This example assumes you do not add any additional money. If you also make regular contributions, the gap between simple and compound interest widens even further. Monthly contributions added to a compounding account benefit from both your deposits and the growth of all previously earned interest.
+    </p>
+
+    <h2>Which One Applies to You?</h2>
+    <p>
+      Most savings accounts, money market accounts, CDs, and investment accounts use compound interest. This works in your favor when you are saving or investing. On the other hand, some loans use simple interest, while credit cards typically use compound interest, which works against you if you carry a balance. Always read the terms carefully to understand how interest is calculated.
+    </p>
+    <p>
+      When evaluating savings products, focus on the annual percentage yield rather than the simple interest rate. APY reflects the effect of compounding and makes it easier to compare accounts with different compounding frequencies. For loans, the annual percentage rate gives a more complete picture of the total cost, including fees.
+    </p>
+
+    <h2>Make Compound Interest Work for You</h2>
+    <p>
+      To benefit from compound interest, start early, contribute regularly, and reinvest your earnings. Consider low-cost brokerage accounts through
+      <AffiliateLink href="https://investor.vanguard.com/" label="Vanguard" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />, or
+      <AffiliateLink href="https://www.wealthfront.com/" label="Wealthfront" />.
+      The longer you stay invested, the more powerful compounding becomes.
+    </p>
+  </div>
+</ToolLayout>

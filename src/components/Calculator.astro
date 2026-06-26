@@ -1,0 +1,151 @@
+---
+import AdSense from './AdSense.astro';
+
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+---
+
+<div data-compound-interest-calculator class="space-y-8">
+  <form data-calculator-form class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div>
+        <label for="principal" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Initial Investment</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <span class="text-slate-500 sm:text-sm">$</span>
+          </div>
+          <input
+            type="number"
+            id="principal"
+            data-input="principal"
+            min="0"
+            step="100"
+            value="10000"
+            class="block w-full rounded-md border-slate-300 pl-7 pr-3 py-2 text-slate-900 focus:border-primary-500 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="contribution" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Monthly Contribution</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <span class="text-slate-500 sm:text-sm">$</span>
+          </div>
+          <input
+            type="number"
+            id="contribution"
+            data-input="contribution"
+            min="0"
+            step="25"
+            value="500"
+            class="block w-full rounded-md border-slate-300 pl-7 pr-3 py-2 text-slate-900 focus:border-primary-500 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="rate" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Annual Interest Rate</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input
+            type="number"
+            id="rate"
+            data-input="rate"
+            min="0"
+            max="100"
+            step="0.1"
+            value="7"
+            class="block w-full rounded-md border-slate-300 pr-8 py-2 text-slate-900 focus:border-primary-500 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+          />
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+            <span class="text-slate-500 sm:text-sm">%</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="years" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Number of Years</label>
+        <input
+          type="number"
+          id="years"
+          data-input="years"
+          min="1"
+          max="100"
+          step="1"
+          value="20"
+          class="mt-1 block w-full rounded-md border-slate-300 py-2 px-3 text-slate-900 focus:border-primary-500 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+        />
+      </div>
+
+      <div class="sm:col-span-2">
+        <label for="frequency" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Compounding Frequency</label>
+        <select
+          id="frequency"
+          data-input="frequency"
+          class="mt-1 block w-full rounded-md border-slate-300 py-2 px-3 text-slate-900 focus:border-primary-500 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+        >
+          <option value="annually">Annually</option>
+          <option value="semi-annually">Semi-annually</option>
+          <option value="quarterly">Quarterly</option>
+          <option value="monthly" selected>Monthly</option>
+          <option value="daily">Daily</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  {adsenseClient && <AdSense client={adsenseClient} slot="1234567890" format="auto" className="my-6" />}
+
+  <div data-results class="hidden space-y-8">
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Total Balance</p>
+        <p data-result="balance" class="mt-2 text-2xl font-bold text-slate-900 dark:text-slate-100">$0</p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Total Contributions</p>
+        <p data-result="contributions" class="mt-2 text-2xl font-bold text-slate-900 dark:text-slate-100">$0</p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Total Interest Earned</p>
+        <p data-result="interest" class="mt-2 text-2xl font-bold text-emerald-600 dark:text-emerald-400">$0</p>
+      </div>
+    </div>
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Growth Chart</h3>
+      <div data-chart class="mt-4 text-slate-700 dark:text-slate-300"></div>
+      <div class="mt-4 flex items-center gap-4 text-sm">
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-sm bg-blue-500"></span> Total Balance</span>
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-sm bg-emerald-500"></span> Contributions</span>
+      </div>
+    </div>
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+        <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Year-by-Year Breakdown</h3>
+        <button
+          type="button"
+          data-copy-results
+          class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-700 transition-colors"
+        >
+          Copy Results
+        </button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-800">
+              <th class="py-3 px-4 text-left font-semibold text-slate-900 dark:text-slate-100">Year</th>
+              <th class="py-3 px-4 text-right font-semibold text-slate-900 dark:text-slate-100">Balance</th>
+              <th class="py-3 px-4 text-right font-semibold text-slate-900 dark:text-slate-100">Contributions</th>
+              <th class="py-3 px-4 text-right font-semibold text-slate-900 dark:text-slate-100">Interest</th>
+            </tr>
+          </thead>
+          <tbody data-breakdown-body></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../scripts/compound-interest-calculator.js"></script>

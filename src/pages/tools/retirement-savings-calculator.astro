@@ -1,0 +1,91 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+import Calculator from '../../components/Calculator.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+
+const title = 'Retirement Savings Calculator — Plan Your Future';
+const description = 'Plan for retirement with our free calculator. Estimate your future nest egg based on current savings, monthly contributions, expected return, and years until retirement.';
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much do I need to retire?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A common rule of thumb is to save 25 times your expected annual expenses. The exact amount depends on your lifestyle, healthcare costs, and other income sources like Social Security.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What accounts should I use for retirement savings?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Start with employer-sponsored plans like a 401(k), especially if there is a company match. Then consider Traditional or Roth IRAs for additional tax-advantaged growth.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the 4% rule?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The 4% rule suggests you can withdraw 4% of your retirement portfolio in the first year, then adjust for inflation, with a high probability the money lasts 30 years.',
+      },
+    },
+  ],
+};
+
+const jsonLd = [faq];
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Retirement may feel far away, but the decisions you make today will determine how comfortable you are decades from now. A retirement savings calculator helps you estimate how much money you could have when you stop working. By entering your current savings, planned monthly contributions, expected investment return, and years until retirement, you can see whether you are on track or need to save more.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    The biggest advantage you have when planning for retirement is time. Thanks to compound interest, money invested in your twenties or thirties has decades to grow. Even modest contributions can grow into a substantial nest egg. On the other hand, waiting until later means you must save much more each month to reach the same goal. This calculator makes that trade-off visible.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Use the tool below to explore different retirement scenarios. Try adjusting your contribution amount, retirement age, or expected return to see how each variable affects your final balance. Remember that tax-advantaged accounts like 401(k)s and IRAs can significantly boost your growth by deferring or eliminating taxes on your investment gains.
+  </p>
+
+  <Calculator />
+
+  <section class="mt-12 prose prose-slate max-w-none">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Retirement Savings Tips</h2>
+    <ul>
+      <li><strong>Maximize employer match:</strong> It is essentially free money and an immediate 100% return.</li>
+      <li><strong>Increase contributions over time:</strong> Raise your savings rate whenever you get a raise.</li>
+      <li><strong>Choose low-cost funds:</strong> Fees eat into long-term growth more than most people realize.</li>
+      <li><strong>Diversify your investments:</strong> A mix of stocks and bonds helps balance growth and stability.</li>
+      <li><strong>Delay Social Security:</strong> Waiting can significantly increase your monthly benefit.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Open a Retirement Account</h2>
+    <p>
+      Consider retirement accounts through
+      <AffiliateLink href="https://investor.vanguard.com/" label="Vanguard" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />,
+      <AffiliateLink href="https://www.schwab.com/" label="Charles Schwab" />,
+      <AffiliateLink href="https://www.betterment.com/" label="Betterment" />, and
+      <AffiliateLink href="https://www.wealthfront.com/" label="Wealthfront" />.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Interpreting Your Retirement Estimate</h2>
+    <p>
+      The calculator shows your projected nest egg at retirement age, not how much you can safely spend each year. To estimate sustainable withdrawals, many planners use the 4% rule as a starting point. For example, a $1.5 million portfolio could support roughly $60,000 in annual withdrawals, adjusted for inflation. Your actual needs depend on your lifestyle, healthcare, location, and other income sources such as pensions or Social Security.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      {faq.mainEntity.map((item) => (
+        <details class="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <summary class="font-semibold text-slate-900 dark:text-slate-100 cursor-pointer">{item.name}</summary>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">{item.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</ToolLayout>

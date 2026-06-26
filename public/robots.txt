@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://compoundinterestcalculator.example.com/sitemap-index.xml

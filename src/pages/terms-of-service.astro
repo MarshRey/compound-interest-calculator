@@ -1,0 +1,57 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+
+const title = 'Terms of Service — Compound Interest Calculator';
+const description = 'Read our terms of service for using the Compound Interest Calculator website and tools.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: Astro.url.toString(),
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="prose prose-slate max-w-none">
+    <p>
+      By accessing or using the Compound Interest Calculator website, you agree to be bound by these Terms of Service. If you do not agree, please do not use the site.
+    </p>
+
+    <h2>Use of the Website</h2>
+    <p>
+      Our calculators, articles, and tools are provided for informational and educational purposes only. You may use the website for lawful personal, non-commercial purposes. You may not copy, modify, distribute, or reverse-engineer any part of the site without our prior written consent.
+    </p>
+
+    <h2>Financial Disclaimer</h2>
+    <p>
+      The information provided on this website does not constitute financial, investment, legal, or tax advice. Calculator results are estimates based on the inputs you provide and assume constant rates of return. Actual investment performance will vary, and past performance is not indicative of future results. Always consult a qualified financial professional before making investment decisions.
+    </p>
+
+    <h2>Affiliate Disclosure</h2>
+    <p>
+      This website contains affiliate links. We may earn a commission if you click on a link and make a purchase or open an account. This comes at no extra cost to you and helps support the site.
+    </p>
+
+    <h2>Intellectual Property</h2>
+    <p>
+      All content, design, code, and materials on this website are the property of Compound Interest Calculator unless otherwise noted. Unauthorized use is prohibited.
+    </p>
+
+    <h2>Limitation of Liability</h2>
+    <p>
+      We strive to keep the website accurate and available, but we make no warranties of any kind. In no event shall we be liable for any damages arising from your use of the website or reliance on its content.
+    </p>
+
+    <h2>Changes to These Terms</h2>
+    <p>
+      We may update these Terms of Service at any time. Continued use of the site after changes constitutes acceptance of the updated terms.
+    </p>
+
+    <h2>Contact Us</h2>
+    <p>
+      For questions about these terms, please visit our <a href="/contact/">contact page</a>.
+    </p>
+  </div>
+</ToolLayout>

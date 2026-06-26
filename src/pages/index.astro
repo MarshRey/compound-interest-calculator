@@ -1,0 +1,182 @@
+---
+import Layout from '../components/Layout.astro';
+import AffiliateLink from '../components/AffiliateLink.astro';
+import AdSense from '../components/AdSense.astro';
+import { Calculator, TrendingUp, PiggyBank, Shield, BookOpen } from '@lucide/astro';
+
+const title = 'Compound Interest Calculator — Free Investment & Savings Growth Tool';
+const description = 'Calculate compound interest for free. Plan investments, savings, retirement, and CDs with charts, yearly breakdowns, and copyable results.';
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+
+const features = [
+  {
+    icon: Calculator,
+    title: 'Easy Calculations',
+    description: 'Enter principal, monthly contributions, rate, and years to see your future balance instantly.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Visual Growth Charts',
+    description: 'See your balance grow year by year with a clear inline SVG bar chart.',
+  },
+  {
+    icon: PiggyBank,
+    title: 'Multiple Scenarios',
+    description: 'Plan investments, savings, retirement, and CDs all in one place.',
+  },
+  {
+    icon: Shield,
+    title: 'Privacy Friendly',
+    description: 'Calculations run in your browser. No account or personal data required.',
+  },
+];
+
+const guides = [
+  {
+    title: 'What Is Compound Interest?',
+    href: '/blog/what-is-compound-interest/',
+  },
+  {
+    title: 'Compound Interest vs. Simple Interest',
+    href: '/blog/compound-interest-vs-simple-interest/',
+  },
+  {
+    title: 'How to Start Investing',
+    href: '/blog/how-to-start-investing/',
+  },
+  {
+    title: 'Best Compound Interest Accounts',
+    href: '/blog/best-compound-interest-accounts/',
+  },
+  {
+    title: 'The Rule of 72',
+    href: '/blog/rule-of-72/',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Compound Interest Calculator',
+  url: Astro.site?.toString() ?? 'https://compoundinterestcalculator.example.com',
+  description,
+};
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <section class="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-24 dark:from-primary-950/30 dark:to-slate-950">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
+        Free Compound Interest Calculator
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Plan your investments, savings, retirement, and CDs. See how compound interest grows your money with charts and year-by-year breakdowns.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/tools/compound-interest-calculator/"
+          class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors"
+        >
+          Try the Calculator
+        </a>
+        <a
+          href="/blog/"
+          class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-primary-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 transition-colors dark:bg-slate-900 dark:text-primary-400 dark:ring-slate-700 dark:hover:bg-slate-800"
+        >
+          Read the Guides
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {adsenseClient && <AdSense client={adsenseClient} slot="1234567891" format="auto" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-8" />}
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          features.map((feature) => (
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow dark:border-slate-800 dark:bg-slate-900">
+              <div class="mb-4 inline-flex items-center justify-center rounded-lg bg-primary-100 p-3 text-primary-700 dark:bg-primary-900/40 dark:text-primary-400">
+                <feature.icon size={24} />
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">{feature.title}</h3>
+              <p class="mt-2 text-slate-600 dark:text-slate-400">{feature.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">Explore Our Tools</h2>
+        <p class="mt-4 text-slate-600 dark:text-slate-400">Choose the calculator that fits your financial goal.</p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="/tools/compound-interest-calculator/" class="block rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-950 dark:hover:border-primary-700">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Compound Interest</h3>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">The main calculator for any compounding scenario.</p>
+        </a>
+        <a href="/tools/investment-growth-calculator/" class="block rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-950 dark:hover:border-primary-700">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Investment Growth</h3>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">Project stock and portfolio growth over time.</p>
+        </a>
+        <a href="/tools/savings-growth-calculator/" class="block rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-950 dark:hover:border-primary-700">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Savings Growth</h3>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">Estimate high-yield savings account balances.</p>
+        </a>
+        <a href="/tools/retirement-savings-calculator/" class="block rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-950 dark:hover:border-primary-700">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Retirement Savings</h3>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">Plan your nest egg and retirement timeline.</p>
+        </a>
+      </div>
+      <div class="mt-6 text-center">
+        <a href="/tools/" class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors">
+          View All Tools
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">Financial Guides</h2>
+        <p class="mt-4 text-slate-600 dark:text-slate-400">Learn the fundamentals of compound interest and smart investing.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          guides.map((guide) => (
+            <a href={guide.href} class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary-700">
+              <BookOpen size={20} class="text-primary-600 dark:text-primary-400" />
+              <span class="font-medium text-slate-900 dark:text-slate-100">{guide.title}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {adsenseClient && <AdSense client={adsenseClient} slot="1234567892" format="auto" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-8" />}
+
+  <section class="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-900">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">Ready to grow your money?</h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-400">
+        Try the free calculator or explore our recommended financial partners.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a
+          href="/tools/compound-interest-calculator/"
+          class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors"
+        >
+          Start Calculating
+        </a>
+        <AffiliateLink href="https://investor.vanguard.com/" label="Open an account at Vanguard" />
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,86 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+import Calculator from '../../components/Calculator.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
+
+const title = 'Investment Growth Calculator — Project Your Portfolio';
+const description = 'Project how your investment portfolio could grow with our free investment growth calculator. Enter your principal, contributions, expected return, and timeframe.';
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is an investment growth calculator?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'An investment growth calculator estimates how much your portfolio may be worth in the future based on your starting balance, recurring contributions, expected rate of return, and time horizon.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is a realistic annual return?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Historical average annual returns for a diversified stock portfolio are roughly 7% to 10% before inflation. Bonds typically return 3% to 5%. Your actual returns will vary.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much should I invest each month?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A common guideline is to invest at least 15% to 20% of your income for long-term goals like retirement. Use the calculator to find a monthly amount that fits your goals.',
+      },
+    },
+  ],
+};
+
+const jsonLd = [faq];
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Building wealth through investing is a long-term game, and the most reliable way to win is to start early and stay consistent. An investment growth calculator helps you visualize the future value of your portfolio by combining your starting principal, ongoing contributions, expected annual return, and investment timeline. Instead of guessing, you can see exactly how small changes today can lead to dramatically different outcomes decades from now.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    The calculator below is perfect for projecting the growth of stocks, ETFs, mutual funds, and diversified retirement accounts. Enter your initial investment, the amount you plan to add each month, your expected annual rate of return, and how many years you intend to stay invested. The tool instantly generates a total balance, a breakdown of your contributions versus interest earned, and a year-by-year chart that shows the power of compounding in action.
+  </p>
+  <p class="text-slate-600 dark:text-slate-400 mb-6">
+    Keep in mind that market returns are never guaranteed. The projections shown here assume a constant annual return, which is a useful simplification but not a prediction. In reality, returns fluctuate from year to year. For this reason, it is wise to run multiple scenarios with conservative, moderate, and optimistic return assumptions. Even with conservative numbers, the effect of compounding can be remarkable when you give it enough time. Use the calculator below to test your own assumptions and build confidence in your plan.
+  </p>
+
+  <Calculator />
+
+  <section class="mt-12 prose prose-slate max-w-none">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Tips for Faster Investment Growth</h2>
+    <ul>
+      <li><strong>Automate contributions:</strong> Set up recurring transfers so you invest before spending.</li>
+      <li><strong>Use index funds:</strong> Low-cost index funds often outperform actively managed funds over time.</li>
+      <li><strong>Diversify globally:</strong> Spread investments across asset classes and geographies to reduce risk.</li>
+      <li><strong>Stay the course:</strong> Avoid panic selling during market downturns.</li>
+      <li><strong>Rebalance yearly:</strong> Keep your target asset allocation aligned with your risk tolerance.</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Open an Investment Account</h2>
+    <p>
+      Ready to start investing? Consider trusted providers such as
+      <AffiliateLink href="https://investor.vanguard.com/" label="Vanguard" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />,
+      <AffiliateLink href="https://www.schwab.com/" label="Charles Schwab" />,
+      <AffiliateLink href="https://www.betterment.com/" label="Betterment" />, and
+      <AffiliateLink href="https://www.wealthfront.com/" label="Wealthfront" />.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-8">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      {faq.mainEntity.map((item) => (
+        <details class="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <summary class="font-semibold text-slate-900 dark:text-slate-100 cursor-pointer">{item.name}</summary>
+          <p class="mt-2 text-slate-600 dark:text-slate-400">{item.acceptedAnswer.text}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</ToolLayout>

@@ -1,0 +1,50 @@
+---
+import ToolLayout from '../components/ToolLayout.astro';
+import AffiliateLink from '../components/AffiliateLink.astro';
+
+const title = 'About — Compound Interest Calculator';
+const description = 'Learn more about Compound Interest Calculator, a free resource for understanding and projecting compound interest, investing, and savings growth.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: title,
+  description,
+  url: Astro.url.toString(),
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="prose prose-slate max-w-none">
+    <p>
+      Compound Interest Calculator is a free online resource designed to help people understand how compound interest works and how it can be used to build wealth over time. Our calculators, guides, and tools are built to be fast, accurate, and easy to use on any device.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4 dark:text-slate-100">Our Mission</h2>
+    <p>
+      We believe that everyone should have access to clear, reliable financial tools. By making compound interest easy to understand and visualize, we hope to help more people start investing earlier, save more consistently, and reach their financial goals faster.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4 dark:text-slate-100">How It Works</h2>
+    <p>
+      All calculations run directly in your browser. No account is required, and we do not store your inputs. Simply enter your numbers, adjust the variables, and see instant results with charts and breakdowns.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4 dark:text-slate-100">Affiliate Disclosure</h2>
+    <p>
+      Some links on this site are affiliate links. We may earn a commission if you click through and open an account or make a purchase. This comes at no additional cost to you and helps support the ongoing development of the site. We only recommend trusted financial services that we believe are relevant to our readers, such as
+      <AffiliateLink href="https://investor.vanguard.com/" label="Vanguard" />,
+      <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />,
+      <AffiliateLink href="https://www.schwab.com/" label="Charles Schwab" />,
+      <AffiliateLink href="https://www.betterment.com/" label="Betterment" />,
+      <AffiliateLink href="https://www.wealthfront.com/" label="Wealthfront" />,
+      <AffiliateLink href="https://www.marcus.com/" label="Marcus by Goldman Sachs" />, and
+      <AffiliateLink href="https://www.ally.com/" label="Ally Bank" />.
+    </p>
+
+    <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-4 dark:text-slate-100">Get in Touch</h2>
+    <p>
+      Have feedback or a suggestion? Visit our <a href="/contact/">contact page</a> to send us a message. We would love to hear from you.
+    </p>
+  </div>
+</ToolLayout>

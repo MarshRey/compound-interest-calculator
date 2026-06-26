@@ -1,0 +1,68 @@
+---
+import ToolLayout from '../../components/ToolLayout.astro';
+
+const title = 'Tools — Compound Interest Calculator';
+const description = 'Browse our collection of free compound interest, investment, savings, retirement, and CD calculators.';
+
+const tools = [
+  {
+    title: 'Compound Interest Calculator',
+    description: 'The main calculator for projecting compound growth with principal, contributions, rate, and frequency.',
+    href: '/tools/compound-interest-calculator/',
+  },
+  {
+    title: 'Investment Growth Calculator',
+    description: 'Estimate how your investment portfolio could grow over time with regular contributions.',
+    href: '/tools/investment-growth-calculator/',
+  },
+  {
+    title: 'Savings Growth Calculator',
+    description: 'Project the future balance of a high-yield savings account with monthly deposits.',
+    href: '/tools/savings-growth-calculator/',
+  },
+  {
+    title: 'Retirement Savings Calculator',
+    description: 'Plan your retirement nest egg based on current savings and monthly contributions.',
+    href: '/tools/retirement-savings-calculator/',
+  },
+  {
+    title: 'CD Interest Calculator',
+    description: 'Calculate the maturity value and interest earned on a certificate of deposit.',
+    href: '/tools/cd-interest-calculator/',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: title,
+  itemListElement: tools.map((tool, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: tool.href,
+    name: tool.title,
+  })),
+};
+---
+
+<ToolLayout title={title} description={description} jsonLd={jsonLd}>
+  <p class="text-slate-600 dark:text-slate-400 mb-8">
+    All of our calculators are free, fast, and run directly in your browser. Whether you are planning for retirement, building an emergency fund, or comparing CDs, these tools help you visualize the power of compound interest.
+  </p>
+
+  <ul class="grid gap-4 sm:grid-cols-2">
+    {
+      tools.map((tool) => (
+        <li>
+          <a
+            href={tool.href}
+            class="block rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-primary-300 transition-all dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary-700"
+          >
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-100">{tool.title}</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-400">{tool.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</ToolLayout>
