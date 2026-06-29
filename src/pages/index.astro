@@ -113,12 +113,16 @@ const jsonLd = [
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
-  <section class="bg-gradient-to-b from-primary-50 to-white py-12 sm:py-16 dark:from-primary-950/30 dark:to-slate-950">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
+  <section
+    class="relative py-16 sm:py-24 text-white"
+    style="background-image: url('/hero-bg.svg'); background-size: cover; background-position: center;"
+  >
+    <div class="absolute inset-0 bg-emerald-950/40"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-lg">
         Free Compound Interest Calculator
       </h1>
-      <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+      <p class="mt-6 text-lg sm:text-xl text-emerald-50 max-w-2xl mx-auto drop-shadow-md">
         Plan your investments, savings, retirement, and CDs. See how compound interest grows your money with charts and year-by-year breakdowns.
       </p>
     </div>
