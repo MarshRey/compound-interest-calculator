@@ -12,7 +12,7 @@ export interface Props {
 const { title, description, canonical, image, jsonLd } = Astro.props;
 const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://example.com';
 const pageUrl = canonical ?? `${site}${Astro.url.pathname}`;
-const ogImage = image ?? `${site}/favicon.svg`;
+const ogImage = image ?? `${site}/og-image.png`;
 const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 

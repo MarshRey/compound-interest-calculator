@@ -2,7 +2,8 @@
 import Layout from '../components/Layout.astro';
 import AffiliateLink from '../components/AffiliateLink.astro';
 import AdSense from '../components/AdSense.astro';
-import { Calculator, TrendingUp, PiggyBank, Shield, BookOpen } from '@lucide/astro';
+import Calculator from '../components/Calculator.astro';
+import { Calculator as CalcIcon, TrendingUp, PiggyBank, Shield, BookOpen } from '@lucide/astro';
 
 const title = 'Compound Interest Calculator — Free Investment & Savings Growth Tool';
 const description = 'Calculate compound interest for free. Plan investments, savings, retirement, and CDs with charts, yearly breakdowns, and copyable results.';
@@ -10,7 +11,7 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 
 const features = [
   {
-    icon: Calculator,
+    icon: CalcIcon,
     title: 'Easy Calculations',
     description: 'Enter principal, monthly contributions, rate, and years to see your future balance instantly.',
   },
@@ -54,44 +55,86 @@ const guides = [
   },
 ];
 
-const jsonLd = {
+const faq = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Compound Interest Calculator',
-  url: Astro.site?.toString() ?? 'https://compoundgrowcalculator.com',
-  description,
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is compound interest?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Compound interest is the interest earned on both your original money and the interest that has already been added to your account. Over time, this creates exponential growth.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I use the compound interest calculator?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Enter your initial investment, monthly contribution, expected annual return, investment length, and compounding frequency. The calculator shows your total balance, contributions, interest earned, and a year-by-year breakdown.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best compounding frequency?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'More frequent compounding generally yields slightly higher returns, but the difference between monthly and daily compounding is usually small. The annual return and time invested matter far more.',
+      },
+    },
+  ],
 };
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Compound Interest Calculator',
+    url: Astro.site?.toString() ?? 'https://compoundgrowcalculator.com',
+    description,
+  },
+  faq,
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Compound Interest Calculator',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    description,
+    url: `${Astro.site?.toString().replace(/\/$/, '') ?? 'https://compoundgrowcalculator.com'}/tools/compound-interest-calculator/`,
+  },
+];
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
-  <section class="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-24 dark:from-primary-950/30 dark:to-slate-950">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section class="bg-gradient-to-b from-primary-50 to-white py-12 sm:py-16 dark:from-primary-950/30 dark:to-slate-950">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
         Free Compound Interest Calculator
       </h1>
       <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
         Plan your investments, savings, retirement, and CDs. See how compound interest grows your money with charts and year-by-year breakdowns.
       </p>
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a
-          href="/tools/compound-interest-calculator/"
-          class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors"
-        >
-          Try the Calculator
-        </a>
-        <a
-          href="/blog/"
-          class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-primary-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 transition-colors dark:bg-slate-900 dark:text-primary-400 dark:ring-slate-700 dark:hover:bg-slate-800"
-        >
-          Read the Guides
-        </a>
-      </div>
     </div>
   </section>
 
-  {adsenseClient && <AdSense client={adsenseClient} slot="1234567891" format="auto" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-8" />}
+  <section class="pb-12 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {adsenseClient && <AdSense client={adsenseClient} slot="1234567891" format="horizontal" className="mb-8" />}
 
-  <section class="py-16 sm:py-20">
+      <Calculator />
+
+      {adsenseClient && <AdSense client={adsenseClient} slot="1234567892" format="rectangle" className="mt-8" />}
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {
@@ -141,7 +184,7 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="py-16 sm:py-20">
+  <section class="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">Financial Guides</h2>
@@ -160,8 +203,6 @@ const jsonLd = {
     </div>
   </section>
 
-  {adsenseClient && <AdSense client={adsenseClient} slot="1234567892" format="auto" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-8" />}
-
   <section class="border-t border-slate-200 bg-slate-50 py-16 dark:border-slate-800 dark:bg-slate-900">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100">Ready to grow your money?</h2>
@@ -169,13 +210,9 @@ const jsonLd = {
         Try the free calculator or explore our recommended financial partners.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-        <a
-          href="/tools/compound-interest-calculator/"
-          class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors"
-        >
-          Start Calculating
-        </a>
         <AffiliateLink href="https://investor.vanguard.com/" label="Open an account at Vanguard" />
+        <AffiliateLink href="https://www.fidelity.com/" label="Fidelity" />
+        <AffiliateLink href="https://www.betterment.com/" label="Betterment" />
       </div>
     </div>
   </section>
